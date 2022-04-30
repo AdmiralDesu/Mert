@@ -127,7 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/music/
 /.idea/.gitignore
 /.idea/Mert.iml
 /.idea/misc.xml
@@ -135,3 +134,8 @@ dmypy.json
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/vcs.xml
+/.music/
+/.migrations/.versions/
+/migrations/
+/music/
+/.idea/dataSources.xml

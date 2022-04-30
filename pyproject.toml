@@ -11,6 +11,9 @@ uvicorn = "^0.17.6"
 asyncpg = "^0.25.0"
 yt-dlp = "^2022.4.8"
 SQLAlchemy = {extras = ["asyncio"], version = "^1.4.36"}
+alembic = "^1.7.7"
+celery = "^5.2.6"
+sqlmodel = "^0.0.6"
 
 [tool.poetry.dev-dependencies]
 
