@@ -136,6 +136,5 @@ dmypy.json
 /.idea/vcs.xml
 /.music/
 /.migrations/.versions/
-/migrations/
 /music/
 /.idea/dataSources.xml
