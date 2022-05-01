@@ -11,7 +11,7 @@ from fastapi.responses import StreamingResponse, FileResponse
 from yt_dlp import YoutubeDL
 from services.song_services import create_song_from_youtube
 
-song_router = APIRouter(#dependencies=[Depends(auth_handler.auth_wrapper)],
+song_router = APIRouter(dependencies=[Depends(auth_handler.auth_wrapper)],
                         tags=['songs'])
 
 
