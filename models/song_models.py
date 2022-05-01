@@ -10,7 +10,7 @@ class SongBase(SQLModel):
 
 
 class Song(SongBase, table=True):
-    song_id: int = Field(default=None, primary_key=True)
+    song_id: int = Field(nullable=False, primary_key=True)
 
     __table_args__ = {'schema': 'music'}
 

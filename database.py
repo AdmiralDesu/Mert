@@ -3,7 +3,7 @@ from sqlmodel import SQLModel
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
-from models.models import Song
+from models.song_models import Song
 
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
