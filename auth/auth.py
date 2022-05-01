@@ -11,6 +11,7 @@ from services.user_services import get_user
 from database import get_session
 from sqlalchemy.ext.asyncio import AsyncSession
 
+
 class AuthHandler:
     security = HTTPBearer()
     pad_context = CryptContext(schemes=['bcrypt'])

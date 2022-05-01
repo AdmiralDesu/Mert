@@ -8,9 +8,10 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from sqlmodel import SQLModel
 
 # import models here
-from models.song_models import *
-from models.user_models import *
-from models.playlist_models import *
+from models.song_models import Song
+from models.user_models import User
+from models.playlist_models import Playlist
+from models.album_models import Album
 
 from alembic import context
 

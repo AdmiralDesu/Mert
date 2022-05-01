@@ -1,7 +1,7 @@
 opts = {
         'format': 'bestaudio/best',
         'forcefilename': 'True',
-        'outtmpl': './music/%(title)s-%(id)s.%(ext)s',
+        'outtmpl': './music/from_youtube/%(title)s-%(id)s.%(ext)s',
         'postprocessors': [
             {
                 'key': 'FFmpegExtractAudio',

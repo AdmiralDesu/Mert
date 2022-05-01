@@ -1,10 +1,9 @@
 from typing import Optional
 from sqlmodel import SQLModel, Field
-from sqlalchemy import UniqueConstraint, Column, String
 
 
 class UserBase(SQLModel):
-    username: str
+    username: str = Field(nullable=False, index=True)
     password: str
 
 
