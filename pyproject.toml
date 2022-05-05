@@ -1,12 +1,11 @@
 [tool.poetry]
 name = "mert"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["AdmiralDesu <skyrim.men024@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "^0.75.2"
 uvicorn = "^0.17.6"
 asyncpg = "^0.25.0"
 yt-dlp = "^2022.4.8"
@@ -17,6 +16,8 @@ sqlmodel = "^0.0.6"
 PyJWT = {extras = ["crypto"], version = "^2.3.0"}
 passlib = "^1.7.4"
 bcrypt = "^3.2.0"
+SQLAlchemy-Utils = "^0.38.2"
+fastapi = "^0.76.0"
 
 [tool.poetry.dev-dependencies]
 
