@@ -10,7 +10,7 @@ class VideoBase(SQLModel):
 
 
 class Video(VideoBase, table=True):
-    video_id: int = Field(nullable=False, primary_key=True)
+    video_id: int = Field(nullable=False, primary_key=True, index=True)
 
     __table_args__ = {'schema': 'videos'}
 

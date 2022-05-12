@@ -69,8 +69,5 @@ async def get_song(song_name: str,
 
     youtube_id = song.youtube_id
 
-    for file in os.listdir('./music/from_youtube'):
-        if youtube_id in file:
-
-            return FileResponse(f'./music/from_youtube/{file}')
+    return FileResponse(f'./music/from_youtube/{youtube_id}.mp3')
 

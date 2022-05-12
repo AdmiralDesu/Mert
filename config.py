@@ -1,7 +1,7 @@
 audio_opts = {
     'format': 'bestaudio/best',
     'forcefilename': 'True',
-    'outtmpl': './music/from_youtube/%(title)s-%(id)s.%(ext)s',
+    'outtmpl': './music/from_youtube/%(id)s.%(ext)s',
     'postprocessors': [
         {
             'key': 'FFmpegExtractAudio',
@@ -15,7 +15,7 @@ audio_opts = {
 
 video_opts = {
     'forcefilename': 'True',
-    'outtmpl': './video/%(title)s-%(id)s.%(ext)s',
+    'outtmpl': './video/%(id)s.%(ext)s',
     'postprocessors': [{
         'key': 'FFmpegVideoConvertor',
         'preferedformat': 'mp4'

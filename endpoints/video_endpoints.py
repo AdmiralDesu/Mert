@@ -6,9 +6,9 @@ from models.video_models import Video, VideoCreate
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from endpoints.user_endpoints import auth_handler
-from fastapi import APIRouter, Depends, HTTPException, Header, Response, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from starlette.status import HTTP_404_NOT_FOUND
-from fastapi.responses import StreamingResponse, FileResponse, HTMLResponse
+from fastapi.responses import StreamingResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 from yt_dlp import YoutubeDL
 from services.youtube_services import create_video_from_youtube
@@ -63,10 +63,10 @@ async def add_video(video: VideoCreate,
     return video
 
 
-@video_router.get('/get_video/{name}')
-async def get_video(name: str,
+@video_router.get('/get_video/{video_id}')
+async def get_video(video_id: int,
                     session: AsyncSession = Depends(get_session)):
-    result = await session.execute(select(Video).where(Video.name.ilike(f'%{name}%')))
+    result = await session.execute(select(Video).where(Video.video_id == video_id))
     video: Video = result.scalars().first()
 
     if not video:
@@ -74,12 +74,10 @@ async def get_video(name: str,
 
     youtube_id = video.youtube_id
 
-    for file in os.listdir('./video'):
-        if youtube_id in file:
-            file_like = open(f'./video/{file}', mode='rb')
-            return StreamingResponse(file_like, media_type='video/mp4')
+    video_file = open(f'./video/{youtube_id}.mp4', mode='rb')
+    return StreamingResponse(video_file, media_type='video/mp4')
 
 
-@video_router.get('/stream_video/{name}', response_class=HTMLResponse)
-async def stream_video(request: Request, name: str):
-    return templates.TemplateResponse('index.htm', context={"request": request, "name": name})
+@video_router.get('/stream_video/{video_id}', response_class=HTMLResponse)
+async def stream_video(request: Request, video_id: int):
+    return templates.TemplateResponse('index.htm', context={"request": request, "video_id": video_id})
