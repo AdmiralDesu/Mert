@@ -1,4 +1,4 @@
-from config import opts
+from config import audio_opts
 import os
 from database import get_session
 from models.song_models import Song, SongCreate
@@ -25,7 +25,7 @@ async def get_audio_from_youtube_url(url: str = None,
         os.mkdir('./music')
         os.mkdir('./music/from_youtube')
 
-    with YoutubeDL(opts) as ydl:
+    with YoutubeDL(audio_opts) as ydl:
         info = ydl.extract_info(url=url, download=True)
 
         return await create_song_from_youtube(info=info, session=session)

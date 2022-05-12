@@ -12,7 +12,9 @@ class PlaylistBase(SQLModel):
 class Playlist(PlaylistBase, table=True):
     playlist_id: int = Field(nullable=False, primary_key=True)
     thumbnail_path: str = Field(default=None, index=True)
-    user_id: int = Field(foreign_key='user.user_id', nullable=False, index=True)
+    user_id: int = Field(foreign_key='users.user.user_id', nullable=False, index=True)
+
+    __table_args__ = {'schema': 'users'}
 
 
 class PlaylistCreate(PlaylistBase):

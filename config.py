@@ -1,4 +1,4 @@
-opts = {
+audio_opts = {
         'format': 'bestaudio/best',
         'forcefilename': 'True',
         'outtmpl': './music/from_youtube/%(title)s-%(id)s.%(ext)s',
@@ -12,3 +12,11 @@ opts = {
 
         ]
     }
+
+video_opts = {
+    'postprocessors': [{
+        'key': 'FFmpegVideoConvertor',
+        'preferedformat': 'mkv'
+    }]
+
+}

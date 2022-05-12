@@ -8,8 +8,10 @@ class UserBase(SQLModel):
 
 
 class User(UserBase, table=True):
-    user_id: int = Field(nullable=False, primary_key=True)
+    user_id: int = Field(nullable=False, primary_key=True, index=True)
     fullname: str = Field(default=None)
+
+    __table_args__ = {'schema': 'users'}
 
 
 class UserCreate(UserBase):

@@ -12,6 +12,8 @@ class Song(SongBase, table=True):
     song_id: int = Field(nullable=False, primary_key=True)
     youtube_id: str = Field(nullable=False, default=None, index=True)
 
+    __table_args__ = {'schema': 'songs'}
+
 
 class SongCreate(SongBase):
     pass
