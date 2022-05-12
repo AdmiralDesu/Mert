@@ -9,7 +9,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from starlette.status import HTTP_404_NOT_FOUND
 from fastapi.responses import StreamingResponse, FileResponse
 from yt_dlp import YoutubeDL
-from services.song_services import create_song_from_youtube
+from services.youtube_services import create_song_from_youtube
 
 song_router = APIRouter(dependencies=[Depends(auth_handler.auth_wrapper)],
                         tags=['songs'])
@@ -41,7 +41,8 @@ async def get_songs(session: AsyncSession = Depends(get_session)) -> list[Song]:
         name=song.name,
         artist=song.artist,
         song_id=song.song_id,
-        year=song.year
+        year=song.year,
+        youtube_id=song.youtube_id
     )
         for song in songs]
 
@@ -66,10 +67,10 @@ async def get_song(song_name: str,
     if not song:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail='Song is not found')
 
-    video_id = song.youtube_id
+    youtube_id = song.youtube_id
 
     for file in os.listdir('./music/from_youtube'):
-        if video_id in file:
+        if youtube_id in file:
 
             return FileResponse(f'./music/from_youtube/{file}')
 

@@ -25,7 +25,13 @@ async def register(user: UserCreate, session: AsyncSession = Depends(get_session
     await session.commit()
     await session.refresh(user)
     print(f'User after refresh {user=}')
-    return JSONResponse(status_code=HTTP_201_CREATED)
+    return JSONResponse(
+        status_code=HTTP_201_CREATED,
+        content={
+            'message': 'Song created',
+            'name': user.username
+        }
+    )
 
 
 @user_router.post('/login', tags=['users'])

@@ -12,6 +12,7 @@ from models.user_models import User
 from models.song_models import Song
 from models.album_models import Album
 from models.playlist_models import Playlist
+from models.video_models import Video
 
 
 class Settings(BaseSettings):
